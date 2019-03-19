@@ -105,7 +105,7 @@ namespace DapperDepartments
             repository.AddEmployee(jane);
 
             employees = repository.GetAllEmployeesWithDepartment();
-            PrintEmployeeReport("All Employees after adding Jane", employees);
+            PrintEmployeeReport(    "All Employees after adding Jane", employees);
             
             Pause();
 
@@ -202,6 +202,8 @@ namespace DapperDepartments
                3: Jamal Ross. Dept: Design
 
             */
+            Console.WriteLine();
+
             Console.WriteLine("All employees with departments");
             foreach (Employee employee in employees) {
                 string firstName = employee.FirstName;
@@ -217,14 +219,9 @@ namespace DapperDepartments
                 else {
                     Console.WriteLine($"{employee.FirstName} {employee.LastName}");
                    
-                }
-
-                
+                }   
             }
-            
         }
-
-
         /// <summary>
         ///  Custom function that pauses execution of the console app until the user presses a key
         /// </summary>

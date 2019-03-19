@@ -379,6 +379,21 @@ namespace DapperDepartments.Data
              * TODO: Complete this method using an UPDATE statement with SQL
              *  Remember to use SqlParameters!
              */
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Employee
+                                           SET DepartmentId = @DepartId
+                                         WHERE Id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@DepartId", employee.DepartmentId));
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+                    // Maybe we should refactor our other SQL to use parameters
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
         }
 
 
@@ -391,6 +406,17 @@ namespace DapperDepartments.Data
              * TODO: Complete this method using a DELETE statement with SQL
              *  Remember to use SqlParameters!
              */
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $@"Delete from employee where id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+                    // Maybe we should refactor our other SQL to use parameters
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
